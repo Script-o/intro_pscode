@@ -1,4 +1,72 @@
 # Client Task A #
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
+// This program is for a number guessing game. The computer will
+// choose a random number between 1 and 10. The player has 3 chances
+// to guess.
 
+currentLoop = 1
+playAgain = No
+
+Output: "Hello player, I am going to think of a number and you will have 3 guesses to get it correct!"
+
+myNumber = First digit of current time + Second digit of current time + third digit of current time + fourth digit of current time
+loop
+    if myNumber > 10 then 
+        myNumber = myNumber - 10;
+        continue loop
+    Else
+        break loop
+
+Output: "Okay, I have come up with the number you will need to guess! What is your first guess?"
+
+loop
+    loop
+        Input: "Please enter a number: " 
+        var playerInput = [Input]
+        If playerInput != A Number between 1 and 10 then
+            Output: "Sorry, that's not a number between 1 and 10. Please enter a new guess."
+            continue loop
+        Else
+            break loop
+
+    if myNumber == playerInput then
+        switch (currentLoop)
+            case 1:
+                Output: "Wow, you got it on the first guess! My number was " + myNumber + "!"
+            case 2:
+                Output: "Good job, you got it on the second guess! My number was " + myNumber + "!"
+            case 3:
+                Output: "Well done, you got it one the third guess! My number was " + myNumber + "!"
+                
+        winning = TRUE
+        break loop
+    Else
+        switch (currentLoop)
+            case 1:
+                Output: "Good guess but that isn't my number. What is your second guess?"
+                currentLoop = 2
+                continue loop
+            case 2:
+                Output: "Oof, that's also not my number. What is your third guess?"
+                currentLoop = 3
+                continue loop
+            case 3:
+                Output: "On no, that's not my number either! Good try but my number was actually " + myNumber + "!"
+                currentLoop = 99
+                winning = FALSE
+                break loop
+
+If winning = TRUE
+    Output: "Good work on guessing my number, would you like to play again?"
+Else 
+    Output: "Good try, maybe next time. Would you like to play again?"
+
+Input: "Play again?"
+playAgain = [Input]
+    If playAgain = (Y, Yes, Yeah, Sure, Okay, Ye, Ya)
+        "Okay, lets play again!"
+        Restart program from line 1
+    Else
+        "Okay, I had fun, I hope we can play again another time!"
+        Exit program

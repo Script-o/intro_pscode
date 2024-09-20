@@ -1,4 +1,116 @@
 # Client Task B #
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
+// This is a program that is designed to map a werehouse,
+// find a specific location, and guide the user to that 
+// location.
 
+Create virtual grid ranging from A-E on the x-axis and 1-10 on the y-axis
+
+// [A1][A2][A3][A4][A5][A6][A7][A8][A9][A10]
+// [B1][B2][B3][B4][B5][B6][B7][B8][B9][B10]
+// [C1][C2][C3][C4][C5][C6][C7][C8][C9][C10]
+// [D1][D2][D3][D4][D5][D6][D7][D8][D9][D10]
+// [E1][E2][E3][E4][E5][E6][E7][E8][E9][E10]
+
+Store all items in werehouse on CSV with the format "ItemName, Location" ex. "Pencils, D5"
+collectionItems = All items on CSV
+
+loop 
+    loop
+        Input: "Enter your current location (A-E, 1-10): " 
+        currentLocation = [Input]
+        digitCheck = First digit of currentLocation
+        digitCheck2 = Second digit of currentLocation
+        If digitCheck == A, B, C, D, E then
+            currentX = First digit of currentLocation
+            currentY = Second digit of currentLocation
+            break loop
+        Else If digitCheck2 == A, B, C, D, E then
+            currentY = First digit of currentLocation
+            currentX = Second digit of currentLocation
+            break loop
+        Else
+            Output: "Sorry, that isn't a valid location."
+
+
+    switch currentX
+        case A
+            currentXNumber = 1
+        case B
+            currentXNumber = 2
+        case C
+            currentXNumber = 3
+        case D
+            currentXNumber = 4
+        case E
+            currentXNumber = 5
+
+    loopCurrent = 1
+    Loop loopCurrent for 10
+        If currentY == loopCurrent
+            break loop
+        Else 
+            loopCurrent = loopCurrent + 1
+            continue loop
+    If loopCurrent > 10
+        Output: "Sorry, that isn't a valid location."
+    Else
+        break loop
+
+itemLocation = FALSE
+loop
+    Input: "What item are you trying to locate?"
+    itemSearch = [input]
+    loopCurrent = 1
+    currentIndex = 1
+    loop loopCurrent for length of collectionItems/2
+        itemStored = currentIndex of collectionItems
+        If itemSearch == itemStored
+            itemLocation = currentIndex + 1 of collectionItems
+            break loop
+        Else
+            currentIndex + 2
+    If itemLocation != FALSE then
+        break loop
+    Else
+        Output: "Sorry, I couldn't find that item."
+
+itemX = First digit of itemLocation
+itemY = Second digit of itemLocation
+
+switch itemX
+    case A
+        itemXNumber = 1
+    case B
+        itemXNumber = 2
+    case C
+        itemXNumber = 3
+    case D
+        itemXNumber = 4
+    case E
+        itemXNumber = 5
+
+Output: "You are currently located in quadrent " + currentX + currentY ". The " + itemSearch + " you are looking for is in quadrent " + itemX + itemY + "."
+
+loop
+    If currentXNumber > itemXNumber then
+        Output: "Move North"
+        currentXNumber -= 1
+    Else If currentXNumber < itemXNumber then
+        Output: "Move South"
+        currentXNumber += 1
+    Else
+        If currentYNumber > itemYNumber then
+            Output: "Move West"
+            currentYNumber -= 1
+        Else If currentYNumber < itemYNumber then
+            Output: "Move East"
+            currentYNumber += 1
+        Else
+            Output: "You are in the same quadrent as the " + itemSearch + "."
+            break loop
+    Input: "Press enter when you have moved quadrents."
+
+Output: "Thank you for using this service."
+close program
