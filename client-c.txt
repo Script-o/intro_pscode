@@ -1,4 +1,22 @@
 # Client Task C #
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
+// This program counts the number of items that a hardware device 
+// scans. Each scan counts as 2 products. Each case can only fit
+// 50 products total. 
 
+productScanned = 0
+
+loop
+    Input: "Scan Item. Current count = " + productScanned + "."
+    If [Input] then 
+        productScanned += 2
+
+    If productScanned >= 50 then
+        loop
+            Input: "You have reached the capacity for the current case. Press 'Y' when you are ready to start on a new case."
+            If [Input] == Y,y then
+                productScanned = 0
+                break loop
+            Else
+                Output: "You must enter 'Y' when you are ready."
